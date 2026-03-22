@@ -32,7 +32,7 @@ export default function AboutSection() {
     <section className=" w-full h-164 px-20 ">
       <div className="flex flex-col gap-2">
         <h1 className="font-rale text-white">VAMOS !</h1>
-        <p className="font-rale text-5"></p>
+        <p className="font-rale text-white text-xl">Boutique Vamos blends football culture with modern street style. From iconic club jerseys to casual essentials and statement outerwear, our collection is made for fans who wear the game beyond the pitch. Whether you&lsquo;re repping your national team, styling a classic club kit, or elevating your everyday look, we deliver football fashion with confidence and character.</p>
       </div>
 
       <div className="flex gap-4 justify-between w-full">
