@@ -1,6 +1,7 @@
 "use client";
 
 import AboutCards from "@/components/AboutCards";
+import OneSocial from "@/components/OneSocial";
 
 export default function AboutSection() {
   const aboutCards = [
@@ -28,21 +29,74 @@ export default function AboutSection() {
     },
   ];
 
+  const socialLinks = [
+    {
+      imageUrl: "/assets/insta.svg",
+      name: "Instagram",
+      content: "boutique.vamos",
+      url: "https://www.instagram.com/boutique.vamos",
+    },
+    {
+      imageUrl: "/assets/tiktok.svg",
+      name: "TikTok",
+      content: "boutique.vamos",
+      url: "https://www.tiktok.com/@boutique.vamos",
+    },
+    {
+      imageUrl: "/assets/whatsapp.svg",
+      name: "WhatsApp",
+      content: "+212 600 000 000",
+      url: "https://wa.me/212600000000",
+    },
+    {
+      imageUrl: "/assets/facebook.svg",
+      name: "Facebook",
+      content: "Boutique Vamos",
+      url: "https://www.facebook.com/boutique.vamos",
+    },
+  ];
+
   return (
-    <section className=" w-full h-164 px-20 ">
+    <section className=" w-full min-h-228.75 flex flex-col items-center justify-between py-16 bg-white h-164 px-20 ">
       <div className="flex flex-col gap-2">
-        <h1 className="font-rale text-white">VAMOS !</h1>
-        <p className="font-rale text-white text-xl">Boutique Vamos blends football culture with modern street style. From iconic club jerseys to casual essentials and statement outerwear, our collection is made for fans who wear the game beyond the pitch. Whether you&lsquo;re repping your national team, styling a classic club kit, or elevating your everyday look, we deliver football fashion with confidence and character.</p>
+        <h1 className="font-rale text-black text-[64px] font-extrabold">
+          VAMOS !
+        </h1>
+        <p className="font-rale text-black text-xl">
+          Boutique Vamos blends football culture with modern street style. From
+          iconic club jerseys to casual essentials and statement outerwear, our
+          collection is made for fans who wear the game beyond the pitch.
+          Whether you&lsquo;re repping your national team, styling a classic
+          club kit, or elevating your everyday look, we deliver football fashion
+          with confidence and character.
+        </p>
       </div>
 
       <div className="flex gap-4 justify-between w-full">
         {aboutCards.map((card) => (
-          <AboutCards key={card.bgUrl} bgUrl={card.bgUrl} heading={card.heading} subHeading={card.subheading} />
+          <AboutCards
+            key={card.bgUrl}
+            bgUrl={card.bgUrl}
+            heading={card.heading}
+            subHeading={card.subheading}
+          />
         ))}
       </div>
-      <div className="flex flex-col">
-        <h2 className="">Social Media</h2>
-        <div className="flex -gap-2"></div>
+      <div className="flex flex-col w-full gap-4">
+        <h2 className=" text-[40px] font-bold text-black font-rale ">
+          Social Media :
+        </h2>
+        <div className="flex flex-row w-full justify-between gap-2">
+          {socialLinks.map((social) => (
+            <OneSocial
+              key={social.name}
+              imageUrl={social.imageUrl}
+              name={social.name}
+              content={social.content}
+              url={social.url}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
