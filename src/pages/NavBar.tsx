@@ -37,7 +37,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className={` transition-all duration-400 ease-in-out  z-30 w-full fixed px-20 transi  justify-between pt-2  flex flex-row min-h-22 ${navClass}`}
+      className={` transition-all duration-400 ease-in-out  z-30 w-full fixed px-20 transi  justify-between pt-2  flex flex-row min-h-20 ${navClass}`}
     >
       <div className="flex flex-row  gap-15  items-center ">
         <Image
@@ -45,7 +45,7 @@ export default function NavBar() {
           alt="Logo"
           height={0}
           width={0}
-          className="h-14 w-auto mb-2"
+          className="h-12 w-auto mb-2"
         />
         <ul className=" flex gap-6 flex-row gap">
           {navItems.map((item) => (

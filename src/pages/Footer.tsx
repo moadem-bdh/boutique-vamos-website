@@ -48,28 +48,28 @@ export default function Footer() {
         <hr className="mb-6 border-white rounded" />
 
         <div className="flex flex-row justify-between w-full px-12 py-8">
-          <div className="flex flex-col items-center justify-between gap-4">
+          <div className="flex flex-col items-center  gap-2">
             <Image
               src="/assets/logo.svg"
               alt="Boutique Vamos"
               width={164}
               height={164}
-              className="h-42 w-42"
+              className="h-40 w-40"
             />
-            <h2 className="font-rale text-[40px] font-bold ">
+            <h2 className="font-rale text-[38px] font-bold ">
               Boutique Vamos
             </h2>
           </div>
          
          <div className="w-max gap-20 flex flex-row">
           <div className="flex flex-col gap-2">
-            <h3 className="font-rale font-semibold text-2xl underline">Sections</h3>
+            <h3 className="font-rale font-semibold text-[22px] underline">Sections</h3>
             <ul className="flex flex-col gap-0.5">
               {sectionLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="font-rale text-lg text-white hover:underline"
+                    className="font-rale  text-white hover:underline"
                   >
                     {link.label}
                   </a>
@@ -79,13 +79,13 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h3 className="font-rale text-2xl font-semibold underline">Contact Us on</h3>
+            <h3 className="font-rale text-[22px] font-semibold underline">Contact Us on</h3>
             <ul className="flex flex-col gap-0.5">
               {contactLinks.map((contact) => (
                 <li key={contact.label}>
                   <a
                     href={contact.href}
-                    className="font-rale text-lg text-white hover:underline"
+                    className="font-rale  text-white hover:underline"
                   >
                     {contact.label}
                   </a>
@@ -97,7 +97,7 @@ export default function Footer() {
           <form className="flex flex-col gap-3 lg:items-end">
             <label
               htmlFor="footer-message"
-              className="w-full font-rale text-2xl font-semibold underline"
+              className="w-full font-rale text-[22px] font-semibold underline"
             >
               Or send a message
             </label>
@@ -112,7 +112,7 @@ export default function Footer() {
 
             <button
               type="button"
-              className="w-max mt-1 rounded-lg border border-white px-4 font-semibold cursor-pointer py-1.5 font-rale text-[24px] text-white transition-colors hover:bg-white hover:text-black"
+              className="w-max mt-1 rounded-lg border border-white px-4 font-semibold cursor-pointer py-1.5 font-rale text-[22px] text-white transition-colors hover:bg-white hover:text-black"
             >
               Submit
             </button>

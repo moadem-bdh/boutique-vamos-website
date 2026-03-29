@@ -25,7 +25,7 @@ export default function LanguageToggle({
 
   return (
     <div
-      className=" flex items-center relative mb-4 cursor-pointer"
+      className=" flex items-center relative mb-2 cursor-pointer"
       onClick={setIsOpen}
     >
       <Image

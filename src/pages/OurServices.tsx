@@ -15,7 +15,7 @@ export default function OurServices() {
           </div>
 
           <div className="flex flex-1 flex-col  justify-between py-1.5 text-white leading-tight">
-            <p className="font-rale text-[29px]">
+            <p className="font-rale text-[28px]">
               Shop official club and national team jerseys. Custom printing with
               your name & number available.
             </p>
@@ -53,7 +53,7 @@ export default function OurServices() {
         </div>
 
         <div className="col-span-2 row-span-1 bg-black rounded-4xl p-7 text-white flex flex-col justify-between">
-          <p className="font-rale text-[29px] leading-tight">
+          <p className="font-rale text-[28px] leading-tight">
             Shop official club and national team jerseys. Custom printing with
             your name & number available.
           </p>
@@ -82,7 +82,7 @@ export default function OurServices() {
           </div>
 
           <div className="flex flex-1 flex-col items-end py-1.5 justify-between text-white">
-            <p className="font-rale text-[29px] leading-tight">
+            <p className="font-rale text-[28px] leading-tight">
               Shop official club and national team jerseys. Custom printing with
               your name & number available.
             </p>
