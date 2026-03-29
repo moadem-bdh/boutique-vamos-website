@@ -7,7 +7,7 @@ export default function LanguageOption({
 }) {
   return (
     <div
-      className={`flex justify-center rounded-[15px] cursor-pointer items-center font-rale w-full px-2.5 py-2  hover:bg-black hover:text-white text-xl `}
+      className={`flex justify-center rounded-[15px] cursor-pointer items-center text-black font-rale w-full px-2.5 py-2  hover:bg-black hover:text-white text-xl `}
     >
       {lang}
     </div>

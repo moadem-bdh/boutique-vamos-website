@@ -29,10 +29,7 @@ export default function FaqSection() {
   ];
 
   return (
-    <section
-      data-theme="dark"
-      className="w-full bg-black flex px-20 py-16 pt-20 flex-col gap-10 items-end"
-    >
+    <section className="w-full bg-black flex px-20 py-16 pt-20 flex-col gap-10 items-end">
       <span className="w-full flex items-center justify-center">
         <h2 className="mb-10 font-rale text-[64px] font-bold text-white">
           FAQ

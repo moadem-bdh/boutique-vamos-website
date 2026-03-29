@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import LanguageToggle from "../components/LanguageToggle";
 import Image from "next/image";
 
-type NavTheme = "transparent" | "dark" | "light";
+type NavTheme = "transparent" | "dark";
 
 export default function NavBar() {
   const [theme, setTheme] = useState<NavTheme>("transparent");
@@ -18,26 +18,9 @@ export default function NavBar() {
   ];
 
   useEffect(() => {
+
     const handleScroll = () => {
-      if (window.scrollY < 10) {
-        setTheme("transparent");
-        return;
-      }
-
-      const sections = document.querySelectorAll<HTMLElement>("[data-theme]");
-      let foundTheme: NavTheme = "dark";
-
-      sections.forEach((sec) => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top <= 64 && rect.bottom >= 64) {
-          const sectionTheme = sec.dataset.theme;
-          if (sectionTheme === "light" || sectionTheme === "dark") {
-            foundTheme = sectionTheme;
-          }
-        }
-      });
-
-      setTheme(foundTheme);
+      setTheme(window.scrollY < 8 ? "transparent" : "dark");
     };
 
     handleScroll();
@@ -49,26 +32,25 @@ export default function NavBar() {
 
   const navClass = {
     transparent: "bg-transparent text-white",
-    dark: "bg-black/40 text-white backdrop-blur-md ",
-    light: "bg-white/50 text-black backdrop-blur-md ",
+    dark: "bg-black text-white  ",
   }[theme];
 
-  const useDarkText = theme === "light";
-
   return (
-    <nav className={`  z-30 w-full fixed px-20  justify-between pt-2  flex flex-row min-h-22 ${navClass}`}>
+    <nav
+      className={` transition-all duration-400 ease-in-out  z-30 w-full fixed px-20 transi  justify-between pt-2  flex flex-row min-h-22 ${navClass}`}
+    >
       <div className="flex flex-row  gap-15  items-center ">
         <Image
           src={"/assets/logo.svg"}
           alt="Logo"
           height={0}
           width={0}
-          className={`h-max w-max mb-2 ${useDarkText ? "invert" : ""}`}
+          className="h-14 w-auto mb-2"
         />
         <ul className=" flex gap-6 flex-row gap">
           {navItems.map((item) => (
             <li
-              className={`text-rale cursor-pointer ${useDarkText ? "text-black" : "text-white"} hover:underline`}
+              className="font-rale cursor-pointer text-white hover:underline"
               key={item}
             >
               {item}
@@ -76,7 +58,7 @@ export default function NavBar() {
           ))}
         </ul>
       </div>
-      <LanguageToggle iconClassName={useDarkText ? "invert" : ""} />
+      <LanguageToggle />
     </nav>
   );
 }

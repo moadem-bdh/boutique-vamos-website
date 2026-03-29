@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function OurServices() {
   return (
-    <section data-theme="light" className="bg-white py-20 h-206 w-full px-20 ">
+    <section className="bg-white py-20 h-206 w-full px-20 ">
       <div className="h-full w-full grid grid-cols-6 grid-rows-2 gap-6">
         <div className="col-span-4 row-span-1 bg-black rounded-4xl p-6 flex gap-5">
           <div className="relative h-full w-[55%] overflow-hidden rounded-xl">
@@ -52,7 +52,7 @@ export default function OurServices() {
           </p>
         </div>
 
-        <div className="col-span-2 row-span-1 bg-black rounded-4xl p-6 text-white flex flex-col justify-between">
+        <div className="col-span-2 row-span-1 bg-black rounded-4xl p-7 text-white flex flex-col justify-between">
           <p className="font-rale text-[29px] leading-tight">
             Shop official club and national team jerseys. Custom printing with
             your name & number available.
