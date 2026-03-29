@@ -57,7 +57,10 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className=" w-full min-h-228.75 flex flex-col items-center justify-between py-16 bg-white h-164 px-20 ">
+    <section
+      data-theme="light"
+      className=" w-full min-h-228.75 flex flex-col items-center justify-between py-16 bg-white h-164 px-20 "
+    >
       <div className="flex flex-col gap-2">
         <h1 className="font-rale text-black text-[64px] font-extrabold">
           VAMOS !

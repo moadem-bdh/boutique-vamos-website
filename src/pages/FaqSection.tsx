@@ -29,7 +29,10 @@ export default function FaqSection() {
   ];
 
   return (
-    <section className="w-full bg-black flex px-20 py-16 pt-20 flex-col gap-10 items-end">
+    <section
+      data-theme="dark"
+      className="w-full bg-black flex px-20 py-16 pt-20 flex-col gap-10 items-end"
+    >
       <span className="w-full flex items-center justify-center">
         <h2 className="mb-10 font-rale text-[64px] font-bold text-white">
           FAQ
@@ -48,14 +51,14 @@ export default function FaqSection() {
 
       <button
         type="button"
-        className="mt-30  flex h-22 w-22 items-center justify-center rounded-full border-2 border-white"
+        className="mt-30  flex h-20 w-20 items-center justify-center rounded-full border-2 border-white"
       >
         <Image
           src="/assets/arrowButton.svg"
           alt="Go to top"
           width={24}
           height={24}
-          className="h-13 w-13"
+          className="h-12 w-12"
         />
       </button>
     </section>

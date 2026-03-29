@@ -27,7 +27,10 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="relative flex flex-col px-20 justify-center gap-16  w-full h-screen min-h-180 z-1">
+    <section
+      data-theme="dark"
+      className="relative flex flex-col px-20 justify-center gap-16  w-full h-screen min-h-180 z-1"
+    >
       <div className=" bg-[url('/assets/stadium_hero.png')]  flex flex-col opacity-[0.08]  bg-cover bg-no-repeat bg-center absolute z-1 inset-0 h-full w-full   " />
 
       <div className=" mt-16 flex gap-1.5 flex-col w-max ">

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import LanguageOption from "./LanguagrOption";
 import useToggle from "../costumHooks/useToggle";
+
 type Language = {
   id: "fr" | "en";
   name: {
@@ -9,7 +10,11 @@ type Language = {
   };
 };
 
-export default function LanguageToggle() {
+export default function LanguageToggle({
+  iconClassName = "",
+}: {
+  iconClassName?: string;
+}) {
   const languages: Language[] = [
     { id: "fr", name: { en: "French", fr: "Francais" } },
     { id: "en", name: { en: "English", fr: "Anglais" } },
@@ -25,7 +30,7 @@ export default function LanguageToggle() {
     >
       <Image
         src="/assets/language.svg"
-        className="h-9"
+        className={`h-9 ${iconClassName}`}
         alt="Language icon"
         width={36}
         height={36}
@@ -35,7 +40,7 @@ export default function LanguageToggle() {
         alt="arrow icon"
         width={24}
         height={24}
-        className={`${isOpen ? "rotate-0" : "rotate-180"} transition-all ease-in-out duration-300`}
+        className={`${iconClassName} ${isOpen ? "rotate-0" : "rotate-180"} transition-all ease-in-out duration-300`}
       />
 
       {isOpen && (
