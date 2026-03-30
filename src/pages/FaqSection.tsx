@@ -29,14 +29,14 @@ export default function FaqSection() {
   ];
 
   return (
-    <section className="w-full bg-black flex px-20 py-16 pt-20 flex-col gap-10 items-end">
+    <section className="w-full bg-black flex px-4 lg:px-20 py-16 pt-20 flex-col gap-10 items-end">
       <span className="w-full flex items-center justify-center">
-        <h2 className="mb-10 font-rale text-[64px] font-bold text-white">
+        <h2 className="mb-10 font-rale text-5xl lg:text-[64px] font-bold text-white">
           FAQ
         </h2>
       </span>
 
-      <div className="w-full gap-5 flex flex-col">
+      <div className="w-full gap-4 lg:gap-5 flex flex-col">
         {faqItems.map((item) => (
           <QnA
             key={item.question}
@@ -48,14 +48,14 @@ export default function FaqSection() {
 
       <button
         type="button"
-        className="mt-30  flex h-20 w-20 items-center justify-center rounded-full border-2 border-white"
+        className="mt-30  flex h-17 w-17 lg:h-20 lg:w-20 items-center justify-center rounded-full border-2 border-white"
       >
         <Image
           src="/assets/arrowButton.svg"
           alt="Go to top"
           width={24}
           height={24}
-          className="h-12 w-12"
+          className=" h-10 w-10 lg:h-12 lg:w-12"
         />
       </button>
     </section>

@@ -2,11 +2,13 @@
 import { useEffect, useState } from "react";
 import LanguageToggle from "../components/LanguageToggle";
 import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
 
 type NavTheme = "transparent" | "dark";
 
 export default function NavBar() {
   const [theme, setTheme] = useState<NavTheme>("transparent");
+  const isPhone = useMediaQuery({ query: "(max-width: 767px)" });
 
   const navItems = [
     "Home",
@@ -18,7 +20,6 @@ export default function NavBar() {
   ];
 
   useEffect(() => {
-
     const handleScroll = () => {
       setTheme(window.scrollY < 8 ? "transparent" : "dark");
     };
@@ -37,9 +38,9 @@ export default function NavBar() {
 
   return (
     <nav
-      className={` transition-all duration-400 ease-in-out  z-30 w-full fixed px-20 transi  justify-between pt-2  flex flex-row min-h-20 ${navClass}`}
+      className={` transition-all duration-400 ease-in-out  z-30 w-full fixed px-4 sm:px-5 md:px-10 lg:px-20  justify-between pt-3 lg:pt-2  flex flex-row min-h-18 sm:min-h-20 ${navClass}`}
     >
-      <div className="flex flex-row  gap-15  items-center ">
+      <div className="flex w-max lg:w-full flex-row items-center">
         <Image
           src={"/assets/logo.svg"}
           alt="Logo"
@@ -47,7 +48,8 @@ export default function NavBar() {
           width={0}
           className="h-12 w-auto mb-2"
         />
-        <ul className=" flex gap-6 flex-row gap">
+
+       { !isPhone && (<ul className="flex w-full flex-row gap-6 pl-3 sm:pl-4 md:pl-6 lg:pl-10">
           {navItems.map((item) => (
             <li
               className="font-rale cursor-pointer text-white hover:underline"
@@ -56,9 +58,23 @@ export default function NavBar() {
               {item}
             </li>
           ))}
-        </ul>
+        </ul> 
+      
+      )}
+
       </div>
       <LanguageToggle />
+      { isPhone &&    <button className="cursor-pointer">     <Image
+          src={"/assets/menuIcon.svg"}
+          alt="Logo"
+          height={0}
+          width={0}
+          className="h-7 w-auto "
+        />
+        </button>
+
+
+      }
     </nav>
   );
 }

@@ -1,11 +1,15 @@
 import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
 
 export default function OurServices() {
+
+    const isPhone = useMediaQuery({ query: "(max-width: 767px)" });
+
   return (
-    <section className="bg-white py-20 h-206 w-full px-20 ">
-      <div className="h-full w-full grid grid-cols-6 grid-rows-2 gap-6">
-        <div className="col-span-4 row-span-1 bg-black rounded-4xl p-6 flex gap-5">
-          <div className="relative h-full w-[55%] overflow-hidden rounded-xl">
+    <section className="bg-white py-10 lg:py-20 lg:h-206 w-full px-4 lg:px-20 ">
+      <div className="h-full w-full flex-col flex md:grid grid-cols-6 grid-rows-2 gap-6">
+        <div className="col-span-4 row-span-1 bg-black rounded-4xl lg:p-6 p-5 flex flex-col lg:flex-row gap-5">
+          <div className="relative min-h-55 lg:h-full w-full lg:w-[55%] overflow-hidden rounded-xl">
             <Image
               src="/assets/milanShirt.jpg"
               alt="Milan shirt"
@@ -14,8 +18,8 @@ export default function OurServices() {
             />
           </div>
 
-          <div className="flex flex-1 flex-col  justify-between py-1.5 text-white leading-tight">
-            <p className="font-rale text-[28px]">
+          <div className="flex flex-1  flex-col gap-6 lg:gap-0  justify-between py-1.5 text-white leading-tight">
+            <p className="font-rale text-2xl lg:text-[28px]">
               Shop official club and national team jerseys. Custom printing with
               your name & number available.
             </p>
@@ -24,7 +28,7 @@ export default function OurServices() {
               href="https://www.instagram.com/boutique.vamos"
               target="_blank"
               rel="noreferrer"
-              className="w-max rounded-full border border-white px-5 py-2 font-rale text-[16px] flex items-center gap-2"
+              className="w-max rounded-full border border-white px-5 py-2 font-rale text-sm lg:text-[16px] flex items-center gap-2"
             >
               Visit Instagram and Order
               <Image
@@ -38,11 +42,11 @@ export default function OurServices() {
           </div>
         </div>
 
-        <div className="col-span-2 row-span-1 bg-white  flex flex-col ">
-          <h2 className="-mt-4 font-rale text-[64px] font-extrabold text-black">
+        <div className="order-first lg:order-0 col-span-2 row-span-1 bg-white lg:gap-0 gap-8  flex flex-col ">
+          <h2 className="-mt-4 lg:text-start text-center font-rale text-5xl lg:text-[64px] font-extrabold text-black">
             Our Service
           </h2>
-          <p className="font-rale text-[20px] leading-tight text-black mb-4">
+          <p className="font-rale text-[16px] text-center lg:text-start lg:text-[20px] leading-tight text-black mb-4">
             Our store is the right place for every sports fan. We offer real
             jerseys, sports shoes, and tracksuits from trusted teams and brands.
             All our products are chosen for quality, comfort, and style, perfect
@@ -52,8 +56,8 @@ export default function OurServices() {
           </p>
         </div>
 
-        <div className="col-span-2 row-span-1 bg-black rounded-4xl p-7 text-white flex flex-col justify-between">
-          <p className="font-rale text-[28px] leading-tight">
+       <div className="col-span-2 row-span-1 gap-4 lg:gap-0 bg-black rounded-4xl p-6 lg:p-7 text-white flex flex-col justify-between">
+          <p className="font-rale text-2xl lg:text-[28px] leading-tight">
             Shop official club and national team jerseys. Custom printing with
             your name & number available.
           </p>
@@ -66,12 +70,12 @@ export default function OurServices() {
               alt="Vamos logo"
               width={42}
               height={42}
-              className="h-16 w-auto"
+              className=" h-10 lg:h-16 lg:w-auto"
             />
           </div>
         </div>
 
-        <div className="col-span-4 row-span-1 bg-black rounded-4xl p-6 flex gap-5">
+       { !isPhone && ( <div className="col-span-4 row-span-1 bg-black rounded-4xl p-6  flex gap-5">
           <div className="relative h-full w-[55%] overflow-hidden rounded-xl">
             <Image
               src="/assets/tnSneaker.jpg"
@@ -96,7 +100,8 @@ export default function OurServices() {
               />
             </div>
           </div>
-        </div>
+        </div>)}
+
       </div>
     </section>
   );

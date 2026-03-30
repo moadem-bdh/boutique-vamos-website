@@ -3,14 +3,14 @@ import DeliveryCard from "@/components/deliveryCard";
 
 export default function DeliverySection() {
   return (
-    <section className="w-full bg-white px-20  pb-20">
+    <section className="w-full bg-white px-4 lg:px-20 lg:pt-10 pt-14  pb-20">
       <div className=" flex w-full flex-col items-center gap-18">
         <div className="flex flex-col items-center  gap-8">
-          <h2 className="  font-rale text-[64px] font-bold  text-black">
+          <h2 className="  font-rale text-5xl text-center lg:text-[64px] font-bold  text-black">
             Delivery
           </h2>
 
-          <p className=" text-center font-rale text-[20px] -mt-4 leading-tight text-black">
+          <p className=" text-center  font-rale text-[16px] lg:text-[20px] -mt-4 leading-tight text-black">
             We are proud to offer fast and reliable delivery to all 58 wilayas
             across the country. No matter where you live, you can shop with
             confidence knowing your order will reach you quickly and safely.

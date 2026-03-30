@@ -43,61 +43,63 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black pb-2 pt-5 text-white px-8 ">
-      
-        <hr className="mb-6 border-white rounded" />
+    <footer className="w-full bg-black  lg:pt-5 text-white px-1 lg:px-8 ">
+      <hr className="mb-6 border-white rounded" />
 
-        <div className="flex flex-row justify-between w-full px-12 py-8">
-          <div className="flex flex-col items-center  gap-2">
-            <Image
-              src="/assets/logo.svg"
-              alt="Boutique Vamos"
-              width={164}
-              height={164}
-              className="h-40 w-40"
-            />
-            <h2 className="font-rale text-[38px] font-bold ">
-              Boutique Vamos
-            </h2>
-          </div>
-         
-         <div className="w-max gap-20 flex flex-row">
-          <div className="flex flex-col gap-2">
-            <h3 className="font-rale font-semibold text-[22px] underline">Sections</h3>
-            <ul className="flex flex-col gap-0.5">
-              {sectionLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="font-rale  text-white hover:underline"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="flex w-full flex-col gap-16 lg:flex-row justify-between  px-3 lg:px-12 py-8">
+        <div className="flex flex-col items-center  gap-2">
+          <Image
+            src="/assets/logo.svg"
+            alt="Boutique Vamos"
+            width={164}
+            height={164}
+            className="h-40 w-40"
+          />
+          <h2 className="font-rale text-[38px] font-bold ">Boutique Vamos</h2>
+        </div>
 
-          <div className="flex flex-col gap-2">
-            <h3 className="font-rale text-[22px] font-semibold underline">Contact Us on</h3>
-            <ul className="flex flex-col gap-0.5">
-              {contactLinks.map((contact) => (
-                <li key={contact.label}>
-                  <a
-                    href={contact.href}
-                    className="font-rale  text-white hover:underline"
-                  >
-                    {contact.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="lg:w-max w-full gap-16 lg:gap-20 flex flex-col lg:flex-row">
+          <div className="gap-20 flex flex-row justify-between">
+            <div className="flex flex-col gap-2">
+              <h3 className="font-rale font-semibold text-[20px] lg:text-[22px] underline">
+                Sections
+              </h3>
+              <ul className="flex flex-col gap-0.5">
+                {sectionLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="font-rale text-sm lg:text-[16px]  text-white hover:underline"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <form className="flex flex-col gap-3 lg:items-end">
+            <div className="flex flex-col gap-2">
+              <h3 className="font-rale text-[20px] lg:text-[22px] font-semibold underline">
+                Contact Us on
+              </h3>
+              <ul className="flex flex-col gap-0.5">
+                {contactLinks.map((contact) => (
+                  <li key={contact.label}>
+                    <a
+                      href={contact.href}
+                      className="font-rale text-sm lg:text-[16px]  text-white hover:underline"
+                    >
+                      {contact.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <form className="flex w-full flex-col gap-3 lg:items-end">
             <label
               htmlFor="footer-message"
-              className="w-full font-rale text-[22px] font-semibold underline"
+              className="w-full font-rale text-[20px] lg:text-[22px] font-semibold underline"
             >
               Or send a message
             </label>
@@ -107,7 +109,7 @@ export default function Footer() {
               name="message"
               rows={4}
               placeholder="Enter your message"
-              className=" resize-none scrollbar-thumb-[#3F3F3F] scrollbar-track-transparent  scrollbar-thin rounded-xl w-93 bg-[#222222] px-3 py-3 font-rale text-lg text-white outline-none  focus:border-[#3F3F3F]"
+              className=" resize-none w-full scrollbar-thumb-[#3F3F3F] scrollbar-track-transparent  scrollbar-thin rounded-xl lg:w-93 bg-[#222222] px-3 py-3 font-rale text-lg text-white outline-none  focus:border-[#3F3F3F]"
             />
 
             <button
@@ -118,37 +120,38 @@ export default function Footer() {
             </button>
           </form>
         </div>
+      </div>
+
+      <div className="flex  gap-2 border-t border-[#2F2F2F] py-2 flex-row items-center justify-between">
+        <p className="font-rale text-xs lg:text-[16px] font-light text-white">
+          By moadem-bdh
+        </p>
+
+        <div className="flex items-center w-max justify-center gap-2 lg:gap-3 ">
+          {socials.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={social.label}
+        
+            >
+              <Image
+                src={social.icon}
+                alt={social.label}
+                width={24}
+                height={24}
+                className=" h-3.5 w-3.5 lg:h-6 lg:w-6"
+              />
+            </a>
+          ))}
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-[#2F2F2F] pt-2 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-rale text-[16px] font-light text-white">By moadem-bdh</p>
-
-          <div className="flex items-center gap-3 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
-            {socials.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={social.label}
-                className="inline-flex h-6 w-6 items-center justify-center"
-              >
-                <Image
-                  src={social.icon}
-                  alt={social.label}
-                  width={24}
-                  height={24}
-                  className="h-6 w-6"
-                />
-              </a>
-            ))}
-          </div>
-
-          <p className="font-rale text-[16px] font-light text-white">
-            All rights reserved 2025
-          </p>
-        </div>
-
+        <p className="font-rale text-xs lg:text-[16px] font-light text-white">
+          All rights reserved 2025
+        </p>
+      </div>
     </footer>
   );
 }

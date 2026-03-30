@@ -13,7 +13,7 @@ export default function AllSections() {
         <AboutSection />
         <OurServices />
         <DeliverySection />
-        <FaqSection />
+        <FaqSection /> 
       </div>
     </>
   );

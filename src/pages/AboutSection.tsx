@@ -57,12 +57,12 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className=" w-full min-h-228.75 flex flex-col items-center justify-between py-16 bg-white h-164 px-20 ">
+    <section className=" gap-16 lg:gap-0 w-full  min-h-229 flex flex-col items-center justify-between py-16 bg-white  px-4 lg:px-20 ">
       <div className="flex flex-col gap-2">
-        <h1 className="font-rale text-black text-[64px] font-extrabold">
+        <h1 className="font-rale text-black lg:text-start text-center text-5xl lg:text-[64px] font-extrabold">
           VAMOS !
         </h1>
-        <p className="font-rale text-black text-xl">
+        <p className="font-rale text-black text-5 text-center lg:text-start lg:text-xl">
           Boutique Vamos blends football culture with modern street style. From
           iconic club jerseys to casual essentials and statement outerwear, our
           collection is made for fans who wear the game beyond the pitch.
@@ -72,7 +72,7 @@ export default function AboutSection() {
         </p>
       </div>
 
-      <div className="flex gap-4 justify-between w-full">
+      <div className="flex items-center lg:flex-row flex-col gap-4  justify-between w-full">
         {aboutCards.map((card) => (
           <AboutCards
             key={card.bgUrl}
@@ -82,11 +82,12 @@ export default function AboutSection() {
           />
         ))}
       </div>
-      <div className="flex flex-col w-full gap-4">
-        <h2 className=" text-[40px] font-bold text-black font-rale ">
-          Social Media :
+
+      <div className="flex flex-col items-center lg:items-start w-full gap-4">
+        <h2 className=" text-3xl lg:text-[40px] font-bold text-black font-rale ">
+          Social Media
         </h2>
-        <div className="flex flex-row w-full justify-between gap-2">
+        <div className="flex flex-row w-full flex-wrap lg:flex-nowrap justify-between gap-2">
           {socialLinks.map((social) => (
             <OneSocial
               key={social.name}

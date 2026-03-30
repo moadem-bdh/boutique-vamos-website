@@ -16,16 +16,16 @@ export default function OneSocial({
       href={url}
       target="_blank"
       rel="noreferrer"
-      className="flex flex-row gap-4"
+      className="flex flex-row gap-2 lg:gap-4"
     >
       <Image
         src={imageUrl}
         alt={name}
         width={32}
         height={32}
-        className={` h-8 w-8`}
+        className={` h-6 w-6 lg:h-8 lg:w-8`}
       />
-      <p className="  font-rale text-2xl font-semibold ">{content}</p>
+      <p className="  font-rale text-[16px] lg:text-2xl font-semibold ">{content}</p>
     </a>
   );
 }
