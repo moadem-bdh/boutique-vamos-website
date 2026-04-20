@@ -57,12 +57,12 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className=" gap-16 lg:gap-0 w-full  min-h-229 flex flex-col items-center justify-between py-16 bg-white  px-4 lg:px-20 ">
+    <section className=" gap-12 lg:gap-0 w-full  min-h-229 flex flex-col items-center justify-between py-16 bg-white  px-4 md:px-6 lg:px-10 xl:px-20 ">
       <div className="flex flex-col gap-2">
-        <h1 className="font-rale text-black lg:text-start text-center text-5xl lg:text-[64px] font-extrabold">
+        <h1 className="font-rale text-black lg:text-start text-center text-5xl md:text-[56px] lg:text-[64px] font-extrabold">
           VAMOS !
         </h1>
-        <p className="font-rale text-black text-5 text-center lg:text-start lg:text-xl">
+        <p className="font-rale text-black text-[16px] text-center lg:text-start lg:text-xl">
           Boutique Vamos blends football culture with modern street style. From
           iconic club jerseys to casual essentials and statement outerwear, our
           collection is made for fans who wear the game beyond the pitch.
@@ -72,7 +72,7 @@ export default function AboutSection() {
         </p>
       </div>
 
-      <div className="flex items-center lg:flex-row flex-col gap-4  justify-between w-full">
+      <div className="grid grid-cols-[repeat(1,minmax(280px,360px))] sm:grid-cols-[repeat(2,minmax(280px,360px))] lg:grid-cols-4 xl:grid-cols-[repeat(4,minmax(240px,1fr))] items-center gap-4 justify-evenly w-full">
         {aboutCards.map((card) => (
           <AboutCards
             key={card.bgUrl}
@@ -84,10 +84,10 @@ export default function AboutSection() {
       </div>
 
       <div className="flex flex-col items-center lg:items-start w-full gap-4">
-        <h2 className=" text-3xl lg:text-[40px] font-bold text-black font-rale ">
+        <h2 className=" text-3xl md:text-[34px] lg:text-[40px] font-bold text-black font-rale ">
           Social Media
         </h2>
-        <div className="flex flex-row w-full flex-wrap lg:flex-nowrap justify-between gap-2">
+        <div className="flex flex-row w-full flex-wrap justify-between sm:gap-x-4 md:gap-x-8  gap-y-2">
           {socialLinks.map((social) => (
             <OneSocial
               key={social.name}

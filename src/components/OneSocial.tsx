@@ -16,7 +16,7 @@ export default function OneSocial({
       href={url}
       target="_blank"
       rel="noreferrer"
-      className="flex flex-row gap-2 lg:gap-4"
+      className="flex flex-row h-max w-max min-w-42 gap-2 lg:gap-4"
     >
       <Image
         src={imageUrl}
@@ -25,7 +25,7 @@ export default function OneSocial({
         height={32}
         className={` h-6 w-6 lg:h-8 lg:w-8`}
       />
-      <p className="  font-rale text-[16px] lg:text-2xl font-semibold ">{content}</p>
+      <p className="whitespace-nowrap  font-rale text-[16px] md:text-xl lg:text-2xl font-semibold ">{content}</p>
     </a>
   );
 }

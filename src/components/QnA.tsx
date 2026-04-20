@@ -15,19 +15,19 @@ export default function QnA({
   const [isOpen, toggleOpen] = useToggle(false);
 
   return (
-    <div className="w-full  bg-black px-2 lg:px-10 py-4 flex flex-col">
+    <div className="w-full  bg-black px-2 lg:px-6 xl:px-10 py-4 flex flex-col">
       <button
         type="button"
         onClick={toggleOpen}
-        className="flex cursor-pointer w-full pr-2 lg:pr-6 pl-1 lg:pl-2 items-center justify-between text-left"
+        className="flex cursor-pointer w-full pr-2 lg:pr-4 xl:pr-6 pl-1 lg:pl-2 items-center justify-between text-left"
       >
-        <span className="font-rale font-medium text-[16px] lg:text-[26px]  pr-4 text-white">{question}</span>
+        <span className="font-rale font-medium text-[18px] md:text-[20px] lg:text-[22px] xl:text-[26px]  pr-4 text-white">{question}</span>
         <Image
           src="/assets/arrow.svg"
           alt="Toggle answer"
           width={20}
           height={20}
-          className={`lg:h-9 lg:w-9 w-7 h-auto transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
+          className={`lg:h-7 lg:w-7 xl:h-9 xl:w-9 w-7 h-auto transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
         />
       </button>
 
@@ -35,7 +35,7 @@ export default function QnA({
 
       {isOpen && (
         <div onClick={toggleOpen} className=" cursor-pointer pl-1 lg:pl-2 pt-6">
-                   <p className=" font-rale text-sm lg:text-[20px] leading-tight text-white/80">
+                   <p className=" font-rale text-[16px] md:text-[18px] lg:text-[18px] xl:text-[20px] leading-tight text-white/80">
           {answer}
         </p> 
         </div>

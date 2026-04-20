@@ -2,13 +2,11 @@
 import { useEffect, useState } from "react";
 import LanguageToggle from "../components/LanguageToggle";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
 
 type NavTheme = "transparent" | "dark";
 
 export default function NavBar() {
   const [theme, setTheme] = useState<NavTheme>("transparent");
-  const isPhone = useMediaQuery({ query: "(max-width: 767px)" });
 
   const navItems = [
     "Home",
@@ -33,7 +31,7 @@ export default function NavBar() {
 
   const navClass = {
     transparent: "bg-transparent text-white",
-    dark: "bg-black text-white  ",
+    dark: "bg-black  ",
   }[theme];
 
   return (
@@ -49,7 +47,7 @@ export default function NavBar() {
           className="h-12 w-auto mb-2"
         />
 
-       { !isPhone && (<ul className="flex w-full flex-row gap-6 pl-3 sm:pl-4 md:pl-6 lg:pl-10">
+       <ul className=" lg:flex hidden w-full flex-row gap-6 pl-3 sm:pl-4 md:pl-6 lg:pl-10">
           {navItems.map((item) => (
             <li
               className="font-rale cursor-pointer text-white hover:underline"
@@ -60,11 +58,11 @@ export default function NavBar() {
           ))}
         </ul> 
       
-      )}
+      
 
       </div>
       <LanguageToggle />
-      { isPhone &&    <button className="cursor-pointer">     <Image
+         <button className=" block lg:hidden cursor-pointer">     <Image
           src={"/assets/menuIcon.svg"}
           alt="Logo"
           height={0}
@@ -74,7 +72,7 @@ export default function NavBar() {
         </button>
 
 
-      }
+
     </nav>
   );
 }

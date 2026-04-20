@@ -3,10 +3,10 @@ import DeliveryCard from "@/components/deliveryCard";
 
 export default function DeliverySection() {
   return (
-    <section className="w-full bg-white px-4 lg:px-20 lg:pt-10 pt-14  pb-20">
+    <section className="w-full bg-white px-4 md:px-6 lg:px-10 xl:px-20 lg:pt-10 pt-14  pb-20">
       <div className=" flex w-full flex-col items-center gap-18">
         <div className="flex flex-col items-center  gap-8">
-          <h2 className="  font-rale text-5xl text-center lg:text-[64px] font-bold  text-black">
+          <h2 className="  font-rale text-5xl md:text-[56px] text-center lg:text-[64px] font-bold  text-black">
             Delivery
           </h2>
 
