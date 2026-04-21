@@ -1,33 +1,12 @@
 "use client";
 import NavCircule from "../components/Navcircule";
 import Image from "next/image";
+import { useLangauge } from "@/contexts/LangaugeContext";
+import { heroData } from "@/data";
 
 
 export default function HeroSection() {
-
-
-  const assetImages = [
-    {
-      id: 1,
-      img: "/assets/global.svg",
-      title: "Online Store",
-    },
-    {
-      id: 2,
-      img: "/assets/box.svg",
-      title: "Home Delivery",
-    },
-    {
-      id: 3,
-      img: "/assets/diamon.svg",
-      title: "High Quality",
-    },
-    {
-      id: 4,
-      img: "/assets/wallet.svg",
-      title: "Cash on Delivery",
-    },
-  ];
+  const { language } = useLangauge();
 
   return (
     <section className="relative items-center lg:items-start flex flex-col px-4 md:px-6 lg:px-10 xl:px-20 justify-center gap-6 lg:gap-10 xl:gap-16  w-full h-screen min-h-180 z-1">
@@ -46,19 +25,16 @@ export default function HeroSection() {
         <h1 className="w-fmax text-4xl md:text-[52px] lg:text-[56px] xl:text-7xl text-white font-rale font-bold ">
           Boutique VAMOS
         </h1>
-        <h3 className="w-max text-2xl lg:text-4xl xl:text-5xl text-white font-rale ">Champion&#39;s look</h3>
+        <h3 className="w-max text-2xl lg:text-4xl xl:text-5xl text-white font-rale ">{heroData.subtitle[language]}</h3>
         <p className=" hidden md:block text-white w-full text-center lg:text-start font-rale t text-sm lg:text-[14px] xl:text-[16px] lg:w-140 xl:w-170 text   ">
-          Show your love for the game and wear your team&#39;s colors with pride
-          through our authentic football jerseys. Whether you&#39;re cheering
-          from the stands or watching at home, our exclusive collections let you
-          support your favorite players in unmatched style and comfort.
+          {heroData.description[language]}
         </p>
         <hr className=" w-90/100 mb-4 lg:mb-0 lg:w-full border-white border-3 mt-8 lg:mt-8 xl:mt-10 rounded  " />
       </div>
 
       <div className=" flex md:mt-6 lg:mt-0  flex-row w-full max-w-134 lg:max-w-none lg:w-130 xl:w-148 justify-between ">
-        {assetImages.map((ass) => (
-          <NavCircule image={ass.img} text={ass.title} key={ass.id} />
+        {heroData.iconItems.map((item) => (
+          <NavCircule image={item.img} text={item.title[language]} key={item.id} />
         ))}
       </div>
 

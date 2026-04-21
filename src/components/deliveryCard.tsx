@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { deliveryData, type Lang } from "@/data";
 
-export default function DeliveryCard() {
+export default function DeliveryCard({ language }: { language: Lang }) {
+  const labels = deliveryData.cardLabels;
+
   return (
     <article className=" rounded-[15px] bg-black flex flex-col  h-max p-1 gap-2.5 pb-2.5">
 
@@ -23,7 +26,7 @@ export default function DeliveryCard() {
         <div className="mb-5 flex flex-row justify-between w-full gap-4">
           <div>
             <p className="font-rale font-medium text-[14px] leading-tight text-[#5D5D5D]">
-              Home Delivery
+              {labels.homeDelivery[language]}
             </p>
             <p className="font-rale text-[22px] leading-none text-black">
               1200 DA
@@ -32,7 +35,7 @@ export default function DeliveryCard() {
 
           <div className="text-right">
             <p className="font-rale font-medium text-[14px] leading-tight text-[#5D5D5D]">
-              Stop Desk
+              {labels.stopDesk[language]}
             </p>
             <p className="font-rale text-[22px] leading-none text-black">
               900 DA
@@ -49,7 +52,7 @@ export default function DeliveryCard() {
             className="h-6 w-6"
           />
           <p className="font-rale text-[20px] font-semibold leading-none text-black">
-            Delivered in 28 to 48 h
+            {labels.deliveryTime[language]}
           </p>
         </div>
       </div>
@@ -65,7 +68,7 @@ export default function DeliveryCard() {
               className="h-5 w-5"
             />
           <p className="font-rale font-medium text-[16px]] leading-none">
-            Get location of the desk
+            {labels.getLocation[language]}
           </p>
         </div>
 

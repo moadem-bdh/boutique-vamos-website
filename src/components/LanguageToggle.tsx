@@ -1,6 +1,7 @@
 import Image from "next/image";
 import LanguageOption from "./LanguagrOption";
 import useToggle from "../costumHooks/useToggle";
+import { useLangauge } from "@/contexts/LangaugeContext";
 
 type Language = {
   id: "fr" | "en";
@@ -20,8 +21,7 @@ export default function LanguageToggle({
     { id: "en", name: { en: "English", fr: "Anglais" } },
   ];
   const [isOpen, setIsOpen] = useToggle(false);
-
-  const currentLangKey = "fr";
+  const {language ,setLanguage} = useLangauge()
 
   return (
     <div
@@ -49,7 +49,9 @@ export default function LanguageToggle({
             <LanguageOption
               key={item.id}
               id={item.id}
-              lang={item.name[currentLangKey]}
+              lang={item.name[language]}
+              selected={language}
+              setLanguage={setLanguage}
             />
           ))}
         </div>

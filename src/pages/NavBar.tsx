@@ -2,20 +2,14 @@
 import { useEffect, useState } from "react";
 import LanguageToggle from "../components/LanguageToggle";
 import Image from "next/image";
+import { useLangauge } from "@/contexts/LangaugeContext";
+import { navData } from "@/data";
 
 type NavTheme = "transparent" | "dark";
 
 export default function NavBar() {
   const [theme, setTheme] = useState<NavTheme>("transparent");
-
-  const navItems = [
-    "Home",
-    "About",
-    "Our Service",
-    "Delivery",
-    "FAQ",
-    "Contact",
-  ];
+  const { language } = useLangauge();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,16 +42,15 @@ export default function NavBar() {
         />
 
        <ul className=" lg:flex hidden w-full flex-row gap-6 pl-3 sm:pl-4 md:pl-6 lg:pl-10">
-          {navItems.map((item) => (
+          {navData.items.map((item, index) => (
             <li
               className="font-rale cursor-pointer text-white hover:underline"
-              key={item}
+              key={index}
             >
-              {item}
+              {item[language]}
             </li>
           ))}
         </ul> 
-      
       
 
       </div>

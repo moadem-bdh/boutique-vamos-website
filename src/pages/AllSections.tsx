@@ -8,13 +8,13 @@ import OurServices from "./OurServices";
 export default function AllSections() {
   return (
     <>
-      <div className="w-full flex flex-col bg-black z-0 min-h-400 ">
-        <HeroSection />
-        <AboutSection />
-        <OurServices />
-        <DeliverySection />
-        <FaqSection /> 
-      </div>
+        <div className="w-full flex flex-col bg-black z-0 min-h-400 ">
+          <HeroSection />
+          <AboutSection />
+          <OurServices />
+          <DeliverySection />
+          <FaqSection />
+        </div>
     </>
   );
 }

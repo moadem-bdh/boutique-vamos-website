@@ -2,32 +2,11 @@
 
 import AboutCards from "@/components/AboutCards";
 import OneSocial from "@/components/OneSocial";
+import { useLangauge } from "@/contexts/LangaugeContext";
+import { aboutData } from "@/data";
 
 export default function AboutSection() {
-  const aboutCards = [
-    {
-      heading: "National Team Jerseys",
-      bgUrl: "/assets/brazil-Image.png",
-      subheading: "Show your country's colors with pride.",
-    },
-    {
-      heading: "Club Jerseys",
-      bgUrl: "/assets/real-image.png",
-      subheading: "Wear the teams you love.",
-    },
-    {
-      heading: "Everyday Basics",
-      bgUrl: "/assets/joging-image.png",
-      subheading:
-        "Comfortable t-shirts, sweatpants, and simple pieces you can wear anytime.",
-    },
-    {
-      heading: "Streetwear Collection",
-      bgUrl: "/assets/leather-image.png",
-      subheading:
-        "Bold jackets and layered outfits inspired by modern football culture.",
-    },
-  ];
+  const { language } = useLangauge();
 
   const socialLinks = [
     {
@@ -63,29 +42,24 @@ export default function AboutSection() {
           VAMOS !
         </h1>
         <p className="font-rale text-black text-[16px] text-center lg:text-start lg:text-xl">
-          Boutique Vamos blends football culture with modern street style. From
-          iconic club jerseys to casual essentials and statement outerwear, our
-          collection is made for fans who wear the game beyond the pitch.
-          Whether you&lsquo;re repping your national team, styling a classic
-          club kit, or elevating your everyday look, we deliver football fashion
-          with confidence and character.
+          {aboutData.description[language]}
         </p>
       </div>
 
       <div className="grid grid-cols-[repeat(1,minmax(280px,360px))] sm:grid-cols-[repeat(2,minmax(280px,360px))] lg:grid-cols-4 xl:grid-cols-[repeat(4,minmax(240px,1fr))] items-center gap-4 justify-evenly w-full">
-        {aboutCards.map((card) => (
+        {aboutData.cards.map((card) => (
           <AboutCards
             key={card.bgUrl}
             bgUrl={card.bgUrl}
-            heading={card.heading}
-            subHeading={card.subheading}
+            heading={card.heading[language]}
+            subHeading={card.subheading[language]}
           />
         ))}
       </div>
 
       <div className="flex flex-col items-center lg:items-start w-full gap-4">
         <h2 className=" text-3xl md:text-[34px] lg:text-[40px] font-bold text-black font-rale ">
-          Social Media
+          {aboutData.socialMediaTitle[language]}
         </h2>
         <div className="flex flex-row w-full flex-wrap justify-between sm:gap-x-4 md:gap-x-8  gap-y-2">
           {socialLinks.map((social) => (
