@@ -9,7 +9,7 @@ export default function FaqSection() {
   const { language } = useLangauge();
 
   return (
-    <section className="w-full bg-black flex px-4 md:px-6 lg:px-10 xl:px-20 py-16 pt-20 flex-col gap-10 items-end">
+    <section id="faq" className="w-full bg-black flex px-4 md:px-6 lg:px-10 xl:px-20 py-16 pt-20 flex-col gap-10 items-end">
       <span className="w-full flex items-center justify-center">
         <h2 className="mb-10 font-rale text-5xl md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold text-white">
           {language === "fr" ? "Questions Fréquentes" : "FAQ"}

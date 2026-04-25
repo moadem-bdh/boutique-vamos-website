@@ -4,12 +4,16 @@ import LanguageToggle from "../components/LanguageToggle";
 import Image from "next/image";
 import { useLangauge } from "@/contexts/LangaugeContext";
 import { navData } from "@/data";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 type NavTheme = "transparent" | "dark";
 
 export default function NavBar() {
   const [theme, setTheme] = useState<NavTheme>("transparent");
   const { language } = useLangauge();
+  const pathname = usePathname(); 
+  const isDeliveryPage = pathname === "/delivery";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,13 +28,13 @@ export default function NavBar() {
   }, []);
 
   const navClass = {
-    transparent: "bg-transparent text-white",
+    transparent: ` ${ isDeliveryPage && "invert"} bg-transparent text-white`,
     dark: "bg-black  ",
   }[theme];
 
   return (
     <nav
-      className={` transition-all duration-400 ease-in-out  z-30 w-full fixed px-4 sm:px-5 md:px-10 lg:px-20  justify-between pt-3 lg:pt-2  flex flex-row min-h-18 sm:min-h-20 ${navClass}`}
+       id="hero" className={` transition-all ${isDeliveryPage ? "sticky top-0" : "fixed"} duration-300 ease-in-out  z-30 w-full  px-4 sm:px-5 md:px-10 lg:px-20  justify-between pt-3 lg:pt-2  flex flex-row min-h-18 sm:min-h-20 ${navClass}`}
     >
       <div className="flex w-max lg:w-full flex-row items-center">
         <Image
@@ -40,14 +44,16 @@ export default function NavBar() {
           width={0}
           className="h-12 w-auto mb-2"
         />
-
+      
        <ul className=" lg:flex hidden w-full flex-row gap-6 pl-3 sm:pl-4 md:pl-6 lg:pl-10">
           {navData.items.map((item, index) => (
-            <li
-              className="font-rale cursor-pointer text-white hover:underline"
-              key={index}
-            >
-              {item[language]}
+            <li key={index}>
+              <Link
+                href={item.href}
+                className="font-rale text-white hover:underline"
+              >
+                {item[language]}
+              </Link>
             </li>
           ))}
         </ul> 

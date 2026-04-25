@@ -12,31 +12,31 @@ export default function AboutSection() {
     {
       imageUrl: "/assets/insta.svg",
       name: "Instagram",
-      content: "boutique.vamos",
-      url: "https://www.instagram.com/boutique.vamos",
+      content: "boutique_vamos",
+      url: "https://www.instagram.com/boutique_vamos/",
     },
     {
       imageUrl: "/assets/tiktok.svg",
       name: "TikTok",
-      content: "boutique.vamos",
-      url: "https://www.tiktok.com/@boutique.vamos",
+      content: "boutique_vamos",
+      url: "https://www.tiktok.com/@boutique_vamos",
     },
     {
       imageUrl: "/assets/whatsapp.svg",
       name: "WhatsApp",
-      content: "+212 600 000 000",
-      url: "https://wa.me/212600000000",
+      content: "07 93 03 67 09",
+      url: "https://wa.me/213793036709",
     },
     {
       imageUrl: "/assets/facebook.svg",
       name: "Facebook",
       content: "Boutique Vamos",
-      url: "https://www.facebook.com/boutique.vamos",
+      url: "https://www.facebook.com/profile.php?id=100093008490316",
     },
   ];
 
   return (
-    <section className=" gap-12 lg:gap-0 w-full  min-h-229 flex flex-col items-center justify-between py-16 bg-white  px-4 md:px-6 lg:px-10 xl:px-20 ">
+    <section id="about" className=" gap-12 lg:gap-0 w-full  min-h-229 flex flex-col items-center justify-between py-16 bg-white  px-4 md:px-6 lg:px-10 xl:px-20 ">
       <div className="flex flex-col gap-2">
         <h1 className="font-rale text-black lg:text-start text-center text-5xl md:text-[56px] lg:text-[64px] font-extrabold">
           VAMOS !

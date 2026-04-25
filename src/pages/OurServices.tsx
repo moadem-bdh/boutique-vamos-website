@@ -7,7 +7,7 @@ export default function OurServices() {
   const { language } = useLangauge();
 
   return (
-    <section className="bg-white py-10 md:py-14 lg:py-16 xl:py-20 w-full px-4 md:px-6 lg:px-10 xl:px-20">
+    <section id="services" className="bg-white py-10 md:py-14 lg:py-16 xl:py-20 w-full px-4 md:px-6 lg:px-10 xl:px-20">
       <div className="h-full w-full flex flex-col md:grid md:grid-cols-2 md:auto-rows-auto lg:grid-cols-6 lg:auto-rows-auto gap-6 md:gap-4 lg:gap-5 xl:gap-6">
 
         {/* Card 1 — Jersey image + CTA */}
@@ -49,7 +49,7 @@ export default function OurServices() {
           <h2 className=" md:mt-1 lg:mt-4 text-center lg:text-start font-rale text-5xl md:text-[56px] lg:text-[47px] xl:text-[56px] font-extrabold text-black">
             {language === "fr" ? "Nos Services" : "Our Service"}
           </h2>
-          <p className="font-rale text-[16px]  lg:text-[18px] xl:text-[19px] text-center lg:text-start leading-tight text-black mb-4">
+          <p className="font-rale text-[16px]  lg:text-~[18px] xl:text-[19px] text-center lg:text-start leading-tight text-black mb-4">
             {servicesData.serviceDescription[language]}
           </p>
         </div>
