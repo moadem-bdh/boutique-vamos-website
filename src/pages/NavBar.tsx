@@ -6,6 +6,9 @@ import { useLangauge } from "@/contexts/LangaugeContext";
 import { navData } from "@/data";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import useToggle from "@/costumHooks/useToggle";
+import Menu from "@/modals/Menu";
+import MenuIcon from "@/components/MenuIcon";
 
 type NavTheme = "transparent" | "dark";
 
@@ -14,7 +17,7 @@ export default function NavBar() {
   const { language } = useLangauge();
   const pathname = usePathname(); 
   const isDeliveryPage = pathname === "/delivery";
-
+  const[ menuToggle , setMenuToggle] = useToggle() ;
   useEffect(() => {
     const handleScroll = () => {
       setTheme(window.scrollY < 8 ? "transparent" : "dark");
@@ -34,9 +37,9 @@ export default function NavBar() {
 
   return (
     <nav
-       id="hero" className={` transition-all ${isDeliveryPage ? "sticky top-0" : "fixed"} duration-300 ease-in-out  z-30 w-full  px-4 sm:px-5 md:px-10 lg:px-20  justify-between pt-3 lg:pt-2  flex flex-row min-h-18 sm:min-h-20 ${navClass}`}
+       id="hero" className={` transition-all ${isDeliveryPage ? "sticky top-0" : "fixed"} duration-300 ease-in-out z-50 w-full  px-4 sm:px-5 md:px-10 lg:px-20  justify-between pt-3 lg:pt-2  flex flex-row min-h-18 sm:min-h-20 ${navClass}`}
     >
-      <div className="flex w-max lg:w-full flex-row items-center">
+      <div className="flex z-50 w-max lg:w-full flex-row items-center">
         <Image
           src={"/assets/logo.svg"}
           alt="Logo"
@@ -45,7 +48,7 @@ export default function NavBar() {
           className="h-12 w-auto mb-2"
         />
       
-       <ul className=" lg:flex hidden w-full flex-row gap-6 pl-3 sm:pl-4 md:pl-6 lg:pl-10">
+       <ul className=" z-50 lg:flex hidden w-full flex-row gap-6 pl-3 sm:pl-4 md:pl-6 lg:pl-10">
           {navData.items.map((item, index) => (
             <li key={index}>
               <Link
@@ -61,16 +64,10 @@ export default function NavBar() {
 
       </div>
       <LanguageToggle />
-         <button className=" block lg:hidden cursor-pointer">     <Image
-          src={"/assets/menuIcon.svg"}
-          alt="Logo"
-          height={0}
-          width={0}
-          className="h-7 w-auto "
-        />
-        </button>
 
+         <MenuIcon open={menuToggle} onClick={setMenuToggle} />
 
+        <Menu menuToggle={menuToggle} setMenuToggle={setMenuToggle} />
 
     </nav>
   );

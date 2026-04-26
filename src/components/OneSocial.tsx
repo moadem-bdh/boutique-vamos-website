@@ -25,7 +25,7 @@ export default function OneSocial({
         height={32}
         className={` h-6 w-6 lg:h-8 lg:w-8`}
       />
-      <p className="whitespace-nowrap  font-rale text-[16px] md:text-xl lg:text-2xl font-semibold ">{content}</p>
+      <p className="whitespace-nowrap transition-all duration-200 ease-in-out hover:underline font-rale text-[16px] md:text-xl lg:text-2xl font-semibold ">{content}</p>
     </a>
   );
 }

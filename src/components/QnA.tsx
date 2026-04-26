@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import useToggle from "@/costumHooks/useToggle";
+import { motion, AnimatePresence } from "framer-motion";
 
 type QnAProps = {
   question?: string;
@@ -31,16 +32,25 @@ export default function QnA({
         />
       </button>
 
-      
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="answer"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ overflow: "hidden" }}
+          >
+            <div onClick={toggleOpen} className=" cursor-pointer pl-1 lg:pl-2 pt-6">
+              <p className=" font-rale text-[16px] md:text-[18px] lg:text-[18px] xl:text-[20px] leading-tight text-white/80">
+                {answer}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {isOpen && (
-        <div onClick={toggleOpen} className=" cursor-pointer pl-1 lg:pl-2 pt-6">
-                   <p className=" font-rale text-[16px] md:text-[18px] lg:text-[18px] xl:text-[20px] leading-tight text-white/80">
-          {answer}
-        </p> 
-        </div>
-
-      )}
       <div className="mt-4 h-[0.8px] w-full rounded-full bg-white" />
     </div>
   );
