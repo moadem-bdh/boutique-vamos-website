@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/pages/NavBar";
 import Footer from "@/pages/Footer";
 import { LangaugeProvider } from "@/contexts/LangaugeContext";
+import SplashScreen from "@/components/SplashScreen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,9 +35,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <LangaugeProvider>
-          <NavBar />
-          {children}
-          <Footer/>
+          <SplashScreen>
+            <NavBar />
+            {children}
+            <Footer/>
+          </SplashScreen>
         </LangaugeProvider>
       </body>
     </html>
