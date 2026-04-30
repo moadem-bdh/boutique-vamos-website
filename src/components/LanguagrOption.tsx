@@ -2,23 +2,23 @@ export default function LanguageOption({
   lang,
   selected,
   id,
-  setLanguage
+  switchLanguages
 }: {
   lang: string;
   selected?: string;
   id: "fr" | "en";
-  setLanguage:(lang:"fr" | "en")=> void ;
+  switchLanguages:(lang:"fr" | "en")=> void ;
 }) {
   const isSelected = selected === id;
 
   return (
     <div
-      className={`flex justify-center rounded-[12px] cursor-pointer items-center font-rale w-full px-2.5 py-2 text-xl transition-all duration-300 ease-in-out ${
+      className={`flex justify-center rounded-xl cursor-pointer items-center font-rale w-full px-2.5 py-2 text-xl transition-all duration-300 ease-in-out ${
         isSelected
           ? "bg-black text-white"
           : "bg-transparent  text-black hover:bg-black hover:text-white"
       }`}
-      onClick={()=>setLanguage(id)}
+      onClick={()=>switchLanguages(id)}
     >
       {lang}
     </div>

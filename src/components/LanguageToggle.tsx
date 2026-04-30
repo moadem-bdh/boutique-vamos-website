@@ -1,8 +1,9 @@
 import Image from "next/image";
 import LanguageOption from "./LanguagrOption";
 import useToggle from "../costumHooks/useToggle";
-import { useLangauge } from "@/contexts/LangaugeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter, usePathname } from "next/navigation";
 
 type Language = {
   id: "fr" | "en";
@@ -22,7 +23,15 @@ export default function LanguageToggle({
     { id: "en", name: { en: "English", fr: "Anglais" } },
   ];
   const [isOpen, setIsOpen] = useToggle(false);
-  const {language ,setLanguage} = useLangauge()
+  const { language } = useLanguage();
+  const pathname = usePathname() ;
+  const router = useRouter() ;
+
+  const switchLanguages = (newLang:string) =>{
+  
+    const newPath = pathname?.replace(/^\/(fr|en)/ , `/${newLang}`);
+    router.push(newPath ?? "en")
+  }
 
   return (
     <div
@@ -51,7 +60,7 @@ export default function LanguageToggle({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.95 }}
             transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex p-1  border border-black  border-solid border-2 flex-col justify-between items-center gap-1.25 w-32.5 rounded-[15px] bg-white -right-10 absolute top-14 "
+            className="flex p-1 border-black  border-solid border-2 flex-col justify-between items-center gap-1.25 w-32.5 rounded-[15px] bg-white -right-10 absolute top-14 "
           >
             {languages.map((item) => (
               <LanguageOption
@@ -59,7 +68,7 @@ export default function LanguageToggle({
                 id={item.id}
                 lang={item.name[language]}
                 selected={language}
-                setLanguage={setLanguage}
+                switchLanguages={switchLanguages}
               />
             ))}
           </motion.div>

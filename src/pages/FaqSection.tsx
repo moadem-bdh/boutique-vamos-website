@@ -2,23 +2,32 @@
 
 import Image from "next/image";
 import QnA from "../components/QnA";
-import { useLangauge } from "@/contexts/LangaugeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { faqData } from "@/data";
 import MotionWrapper, { fadeUp } from "@/components/MotionWrapper";
 import { StaggerContainer, StaggerItem } from "@/components/MotionWrapper";
 
 export default function FaqSection() {
-  const { language } = useLangauge();
+  const { language } = useLanguage();
 
   return (
-    <section id="faq" className="w-full bg-black flex px-4 md:px-6 lg:px-10 xl:px-20 py-16 pt-20 flex-col gap-10 items-end">
-      <MotionWrapper variants={fadeUp} className="w-full flex items-center justify-center">
+    <section
+      id="faq"
+      className="w-full bg-black flex px-4 md:px-6 lg:px-10 xl:px-20 py-16 pt-20 flex-col gap-10 items-end"
+    >
+      <MotionWrapper
+        variants={fadeUp}
+        className="w-full flex items-center justify-center"
+      >
         <h2 className="mb-10 font-rale text-5xl md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold text-white">
           {language === "fr" ? "Questions Fréquentes" : "FAQ"}
         </h2>
       </MotionWrapper>
 
-      <StaggerContainer staggerDelay={0.1} className="w-full gap-4 lg:gap-4 xl:gap-5 flex flex-col">
+      <StaggerContainer
+        staggerDelay={0.1}
+        className="w-full gap-4 lg:gap-4 xl:gap-5 flex flex-col"
+      >
         {faqData.items.map((item, index) => (
           <StaggerItem key={index} variants={fadeUp} duration={0.45}>
             <QnA

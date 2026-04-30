@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/pages/NavBar";
 import Footer from "@/pages/Footer";
-import { LangaugeProvider } from "@/contexts/LangaugeContext";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import SplashScreen from "@/components/SplashScreen";
 
 const geistSans = Geist({
@@ -24,23 +24,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: "fr" | "en" }>;
 }>) {
+  const { lang } = await params ;
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LangaugeProvider>
+        <LanguageProvider initialLanguage={lang} >
           <SplashScreen>
-            <NavBar />
+            <NavBar lang={lang} />
             {children}
-            <Footer/>
+            <Footer lang={lang} />
           </SplashScreen>
-        </LangaugeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

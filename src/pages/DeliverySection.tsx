@@ -1,19 +1,25 @@
 "use client";
 import Image from "next/image";
 import DeliveryCard from "@/components/deliveryCard";
-import { useLangauge } from "@/contexts/LangaugeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { deliveryData } from "@/data";
 import Link from "next/link";
-import MotionWrapper, { fadeUp, fadeIn } from "@/components/MotionWrapper";
+import MotionWrapper, { fadeUp } from "@/components/MotionWrapper";
 import { StaggerContainer, StaggerItem } from "@/components/MotionWrapper";
 
-export default function DeliverySection() {
-  const { language } = useLangauge();
+export default function DeliverySection({ lang }: { lang: "fr" | "en" }) {
+  const { language } = useLanguage();
 
   return (
-    <section id="delivery" className="w-full bg-white px-4 md:px-6 lg:px-10 xl:px-20 lg:pt-10 pt-14  pb-20">
+    <section
+      id="delivery"
+      className="w-full bg-white px-4 md:px-6 lg:px-10 xl:px-20 lg:pt-10 pt-14  pb-20"
+    >
       <div className=" flex w-full flex-col items-center gap-18">
-        <MotionWrapper variants={fadeUp} className="flex flex-col items-center  gap-8">
+        <MotionWrapper
+          variants={fadeUp}
+          className="flex flex-col items-center  gap-8"
+        >
           <h2 className="  font-rale text-5xl md:text-[56px] text-center lg:text-[64px] font-bold  text-black">
             {language === "fr" ? "Livraison" : "Delivery"}
           </h2>
@@ -25,7 +31,10 @@ export default function DeliverySection() {
           <div className=" h-1 w-75/100 rounded-full bg-black" />
         </MotionWrapper>
 
-        <StaggerContainer staggerDelay={0.07} className="grid w-full gap-3 grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
+        <StaggerContainer
+          staggerDelay={0.07}
+          className="grid w-full gap-3 grid-cols-[repeat(auto-fill,minmax(320px,1fr))]"
+        >
           {[...Array(8)].map((_, i) => (
             <StaggerItem key={i} as="article" variants={fadeUp} duration={0.45}>
               <DeliveryCard language={language} />
@@ -35,7 +44,7 @@ export default function DeliverySection() {
 
         <MotionWrapper variants={fadeUp} delay={0.15}>
           <Link
-            href={"/delivery"}
+            href={`/${lang}/delivery`}
             className="group flex items-center cursor-pointer gap-3 font-rale text-[30px] font-semibold text-black"
           >
             {deliveryData.seeAllButton[language]}

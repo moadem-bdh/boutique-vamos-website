@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useLangauge } from "@/contexts/LangaugeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { footerData } from "@/data";
 import Link from "next/link";
 import MotionWrapper, { fadeUp, fadeIn } from "@/components/MotionWrapper";
@@ -39,13 +39,14 @@ const socials = [
   },
 ];
 
-export default function Footer() {
-  const { language } = useLangauge();
+export default function Footer({ lang }: { lang: "fr" | "en" }) {
+  const { language } = useLanguage();
   const pathname = usePathname();
-  const isDelivery = pathname === "/delivery";
+  const isDelivery = pathname === `/${lang}/delivery` ;
 
   return (
-    <footer id="contact"
+    <footer
+      id="contact"
       className={`w-full lg:pt-5 px-1 lg:px-4 xl:px-8 transition-colors duration-300 ${
         isDelivery ? "bg-white text-black" : "bg-black text-white"
       }`}
@@ -55,7 +56,10 @@ export default function Footer() {
       />
 
       <div className="flex w-full flex-col gap-16 lg:flex-row justify-between px-3 lg:px-6 xl:px-12 py-8">
-        <MotionWrapper variants={fadeUp} className="flex flex-col items-center gap-2">
+        <MotionWrapper
+          variants={fadeUp}
+          className="flex flex-col items-center gap-2"
+        >
           <Image
             src={isDelivery ? "/assets/logoDark.svg" : "/assets/logo.svg"}
             alt="Boutique Vamos"
@@ -69,7 +73,11 @@ export default function Footer() {
         </MotionWrapper>
 
         <div className="lg:w-max w-full gap-10 lg:gap-12 xl:gap-20 flex flex-col lg:flex-row">
-          <MotionWrapper variants={fadeUp} delay={0.1} className="flex flex-col gap-2">
+          <MotionWrapper
+            variants={fadeUp}
+            delay={0.1}
+            className="flex flex-col gap-2"
+          >
             <h3 className="font-rale font-semibold text-[20px] xl:text-[22px] underline">
               {footerData.sectionsTitle[language]}
             </h3>
@@ -77,7 +85,7 @@ export default function Footer() {
               {footerData.sectionLinks.map((link) => (
                 <li className="w-max" key={link.label.en}>
                   <Link
-                    href={link.href}
+                    href={`/${lang}${link.href}`}
                     className={`font-rale text-[14px] xl:text-[16px] hover:underline ${
                       isDelivery ? "text-black" : "text-white"
                     }`}
@@ -89,7 +97,11 @@ export default function Footer() {
             </ul>
           </MotionWrapper>
 
-          <MotionWrapper variants={fadeUp} delay={0.15} className="flex flex-col gap-2">
+          <MotionWrapper
+            variants={fadeUp}
+            delay={0.15}
+            className="flex flex-col gap-2"
+          >
             <h3 className="font-rale whitespace-nowrap text-[20px] xl:text-[22px] font-semibold underline">
               {footerData.contactTitle[language]}
             </h3>
@@ -185,7 +197,9 @@ export default function Footer() {
               isDelivery ? "text-black" : "text-white"
             }`}
           >
-            {language === "fr" ? "Tous droits réservés 2025" : "All rights reserved 2025"}
+            {language === "fr"
+              ? "Tous droits réservés 2025"
+              : "All rights reserved 2025"}
           </p>
         </div>
       </MotionWrapper>

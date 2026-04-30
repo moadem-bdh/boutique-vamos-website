@@ -232,12 +232,12 @@ export const navData: {
   items: (T & { href: string })[];
 } = {
   items: [
-    { en: "Home",        fr: "Accueil",      href: "/#hero" },
-    { en: "About",       fr: "À propos",     href: "/#about" },
-    { en: "Our Service", fr: "Nos services", href: "/#services" },
-    { en: "Delivery",    fr: "Livraison",    href: "/#delivery" },
-    { en: "FAQ",         fr: "FAQ",          href: "/#faq" },
-    { en: "Contact",     fr: "Contact",      href: "/#contact" },
+    { en: "Home",        fr: "Accueil",      href: "#hero" },
+    { en: "About",       fr: "À propos",     href: "#about" },
+    { en: "Our Service", fr: "Nos services", href: "#services" },
+    { en: "Delivery",    fr: "Livraison",    href: "#delivery" },
+    { en: "FAQ",         fr: "FAQ",          href: "#faq" },
+    { en: "Contact",     fr: "Contact",      href: "#contact" },
   ],
 };
 

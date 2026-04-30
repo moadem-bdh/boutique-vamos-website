@@ -12,13 +12,17 @@ export type languageContextType = {
   setLanguage: (lang: "en" | "fr") => void;
 };
 
+type LanguageProviderProps = PropsWithChildren & {
+  initialLanguage: "en" | "fr";
+};
+
 export const LanguageContext = createContext<languageContextType>({
   language: "en",
   setLanguage: () => {},
 });
 
-export const LangaugeProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [language, setLanguage] = useState<"en" | "fr">("en");
+export const LanguageProvider: FC<LanguageProviderProps> = ({ children , initialLanguage }) => {
+  const [language, setLanguage] = useState<"en" | "fr">(initialLanguage);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
@@ -27,4 +31,4 @@ export const LangaugeProvider: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export const useLangauge = () => useContext(LanguageContext);
+export const useLanguage = () => useContext(LanguageContext);

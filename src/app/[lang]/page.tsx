@@ -6,6 +6,7 @@ export const metadata = {
   keywords: ["Boutique", "Vamos"],
 };
 
-export default function Home() {
-  return <AllSections />;
+export default async function Home({ params }: {params: Promise<{ lang: "fr" | "en" }>}) {
+  const { lang } = await params;
+  return <AllSections lang={lang} />;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useLangauge } from "@/contexts/LangaugeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { navData } from "@/data";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -11,7 +11,7 @@ type MenuModalProps = {
 };
 
 export default function Menu({ menuToggle, setMenuToggle }: MenuModalProps) {
-  const { language } = useLangauge();
+  const { language } = useLanguage();
 
   return (
     <AnimatePresence>
@@ -71,7 +71,6 @@ export default function Menu({ menuToggle, setMenuToggle }: MenuModalProps) {
                 </motion.li>
               ))}
             </motion.ul>
-
           </motion.div>
         </>
       )}
