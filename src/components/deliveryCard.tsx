@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { deliveryData, wilayas, type Lang } from "@/data";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 type Wilaya = (typeof wilayas)[number];
 
@@ -118,45 +119,57 @@ export default function DeliveryCard({
         </button>
       </div>
 
-      {/* Popup for dual-location wilayas */}
-      {showPopup && Array.isArray(wilaya.maps) && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-          onClick={() => setShowPopup(false)}
-        >
-          <div
-            className="bg-white rounded-2xl shadow-2xl px-6 py-7 flex flex-col gap-4 min-w-67.5 max-w-[90vw]"
-            onClick={(e) => e.stopPropagation()}
+      {/* Animated popup for dual-location wilayas */}
+      <AnimatePresence>
+        {showPopup && Array.isArray(wilaya.maps) && (
+          <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+            onClick={() => setShowPopup(false)}
           >
-            <h4 className="font-rale text-[20px] font-bold text-black text-center">
-              {language === "fr" ? "Choisir un emplacement" : "Choose a location"}
-            </h4>
-
-            {wilaya.maps.map((loc, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => {
-                  window.open(loc.url, "_blank", "noopener,noreferrer");
-                  setShowPopup(false);
-                }}
-                className="flex items-center gap-3 px-5 py-3 rounded-xl text-white border-2 group bg-black hover:border-black hover:bg-white hover:text-black font-rale text-[17px] font-semibold transition-all duration-200 cursor-pointer"
-              >
-                <Image src="/assets/location.svg" alt="" width={18} height={18} className="h-5 w-5 transition-all duration-200 group-hover:invert  " />
-                {loc.label.en}
-              </button>
-            ))}
-
-            <button
-              type="button"
-              onClick={() => setShowPopup(false)}
-              className="font-rale text-[14px] font-semibold text-[#505050] hover:text-black transition-colors cursor-pointer"
+            <motion.div
+              key="dialog"
+              initial={{ opacity: 0, scale: 0.85, y: 24 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.85, y: 24 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+              className="bg-white rounded-2xl shadow-2xl px-6 py-7 flex flex-col gap-4 min-w-67.5 max-w-[90vw]"
+              onClick={(e) => e.stopPropagation()}
             >
-              {language === "fr" ? "Annuler" : "Cancel"}
-            </button>
-          </div>
-        </div>
-      )}
+              <h4 className="font-rale text-[20px] font-bold text-black text-center">
+                {language === "fr" ? "Choisir un emplacement" : "Choose a location"}
+              </h4>
+
+              {wilaya.maps.map((loc, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => {
+                    window.open(loc.url, "_blank", "noopener,noreferrer");
+                    setShowPopup(false);
+                  }}
+                  className="flex items-center gap-3 px-5 py-3 rounded-xl text-white border-2 group bg-black hover:border-black hover:bg-white hover:text-black font-rale text-[17px] font-semibold transition-all duration-200 cursor-pointer"
+                >
+                  <Image src="/assets/location.svg" alt="" width={18} height={18} className="h-5 w-5 transition-all duration-200 group-hover:invert" />
+                  {loc.label.en}
+                </button>
+              ))}
+
+              <button
+                type="button"
+                onClick={() => setShowPopup(false)}
+                className="font-rale text-[14px] font-semibold text-[#505050] hover:text-black transition-colors cursor-pointer"
+              >
+                {language === "fr" ? "Annuler" : "Cancel"}
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </article>
   );
 }
