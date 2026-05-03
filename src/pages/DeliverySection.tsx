@@ -18,6 +18,7 @@ export default function DeliverySection({ lang }: { lang: "fr" | "en" }) {
       <div className=" flex w-full flex-col items-center gap-18">
         <MotionWrapper
           variants={fadeUp}
+          threshold={0}
           className="flex flex-col items-center  gap-8"
         >
           <h2 className="  font-rale text-5xl md:text-[56px] text-center lg:text-[64px] font-bold  text-black">
@@ -33,6 +34,7 @@ export default function DeliverySection({ lang }: { lang: "fr" | "en" }) {
 
         <StaggerContainer
           staggerDelay={0.07}
+          threshold={0}
           className="grid w-full gap-3  grid-cols-[repeat(auto-fill,minmax(320px,1fr))]"
         >
           {wilayas.slice(0, 8).map((wilaya) => (
