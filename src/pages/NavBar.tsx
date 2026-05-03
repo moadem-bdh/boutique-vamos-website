@@ -66,7 +66,7 @@ export default function NavBar({ lang }: { lang: "fr" | "en" } ) {
 
       <MenuIcon open={menuToggle} onClick={setMenuToggle} />
 
-      <Menu menuToggle={menuToggle} setMenuToggle={setMenuToggle} />
+      <Menu menuToggle={menuToggle} setMenuToggle={setMenuToggle} lang={lang} />
     </nav>
   );
 }

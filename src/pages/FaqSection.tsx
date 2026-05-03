@@ -19,7 +19,7 @@ export default function FaqSection() {
         variants={fadeUp}
         className="w-full flex items-center justify-center"
       >
-        <h2 className="mb-10 font-rale text-5xl md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold text-white">
+        <h2 className="mb-10 text-center font-rale text-5xl md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold text-white">
           {language === "fr" ? "Questions Fréquentes" : "FAQ"}
         </h2>
       </MotionWrapper>

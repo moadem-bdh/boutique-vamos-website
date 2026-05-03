@@ -66,9 +66,9 @@ export default function DeliveryCard({
               {labels.stopDesk[language]}
             </p>
             <p className="font-rale text-[22px] leading-none text-black">
-              {wilaya.price.stopDesk > 0 ? `${wilaya.price.stopDesk} DA` : "—"}
+              {wilaya.price.stopDesk != "0" ? `${wilaya.price.stopDesk} DA` : "—"}
             </p>
-          </div>
+          </div>  
         </div>
 
         <div className="flex items-center gap-2 mt-auto">

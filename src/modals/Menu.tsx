@@ -8,9 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 type MenuModalProps = {
   menuToggle: boolean;
   setMenuToggle: () => void;
+  lang: "fr" | "en";
 };
 
-export default function Menu({ menuToggle, setMenuToggle }: MenuModalProps) {
+export default function Menu({ menuToggle, setMenuToggle, lang }: MenuModalProps) {
   const { language } = useLanguage();
 
   return (
@@ -62,7 +63,7 @@ export default function Menu({ menuToggle, setMenuToggle }: MenuModalProps) {
                   }}
                 >
                   <Link
-                    href={item.href}
+                    href={`/${lang}${item.href}`}
                     onClick={setMenuToggle}
                     className="block font-rale text-white text-2xl font-semibold py-3 transition-colors duration-200 hover:text-white/70"
                   >

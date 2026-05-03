@@ -4,6 +4,7 @@ import useToggle from "../costumHooks/useToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 type Language = {
   id: "fr" | "en";
@@ -26,6 +27,18 @@ export default function LanguageToggle({
   const { language } = useLanguage();
   const pathname = usePathname() ?? "" ;
   const router = useRouter() ;
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setIsOpen();
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [isOpen]);
 
 const switchLanguages = (newLang: string) => {
   const hash = window.location.hash; // "#hero"
@@ -43,6 +56,7 @@ const switchLanguages = (newLang: string) => {
 
   return (
     <div
+      ref={wrapperRef}
       className="relative z-50  mb-1 flex items-center cursor-pointer"
       onClick={setIsOpen}
     >
