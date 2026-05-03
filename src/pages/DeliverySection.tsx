@@ -2,7 +2,7 @@
 import Image from "next/image";
 import DeliveryCard from "@/components/deliveryCard";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { deliveryData } from "@/data";
+import { deliveryData, wilayas } from "@/data";
 import Link from "next/link";
 import MotionWrapper, { fadeUp } from "@/components/MotionWrapper";
 import { StaggerContainer, StaggerItem } from "@/components/MotionWrapper";
@@ -33,11 +33,11 @@ export default function DeliverySection({ lang }: { lang: "fr" | "en" }) {
 
         <StaggerContainer
           staggerDelay={0.07}
-          className="grid w-full gap-3 grid-cols-[repeat(auto-fill,minmax(320px,1fr))]"
+          className="grid w-full gap-3  grid-cols-[repeat(auto-fill,minmax(320px,1fr))]"
         >
-          {[...Array(8)].map((_, i) => (
-            <StaggerItem key={i} as="article" variants={fadeUp} duration={0.45}>
-              <DeliveryCard language={language} />
+          {wilayas.slice(0, 8).map((wilaya) => (
+            <StaggerItem key={wilaya.id} as="article" variants={fadeUp} duration={0.45} className="h-full">
+              <DeliveryCard language={language} wilaya={wilaya} />
             </StaggerItem>
           ))}
         </StaggerContainer>

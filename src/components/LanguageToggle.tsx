@@ -24,14 +24,22 @@ export default function LanguageToggle({
   ];
   const [isOpen, setIsOpen] = useToggle(false);
   const { language } = useLanguage();
-  const pathname = usePathname() ;
+  const pathname = usePathname() ?? "" ;
   const router = useRouter() ;
 
-  const switchLanguages = (newLang:string) =>{
-  
-    const newPath = pathname?.replace(/^\/(fr|en)/ , `/${newLang}`);
-    router.push(newPath ?? "en")
+const switchLanguages = (newLang: string) => {
+  const hash = window.location.hash; // "#hero"
+
+  let newPath = pathname;
+
+  if (/^\/(fr|en)/.test(pathname)) {
+    newPath = pathname.replace(/^\/(fr|en)/, `/${newLang}`);
+  } else {
+    newPath = `/${newLang}${pathname}`;
   }
+
+  router.push(`${newPath}${hash}`);
+};
 
   return (
     <div

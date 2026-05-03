@@ -12,12 +12,8 @@ const contactLinks = [
     href: "tel:+213793036709",
   },
   {
-    label: "07 82 35 19 31",
-    href: "tel:+213782351931",
-  },
-  {
-    label: "[EMAIL_ADDRESS]",
-    href: "mailto:[EMAIL_ADDRESS]",
+    label: "bdhyounes15@gmail.com",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=bdhyounes15@gmail.com",
   },
 ];
 

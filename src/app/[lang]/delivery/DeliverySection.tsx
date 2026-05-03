@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import MotionWrapper, { fadeUp } from "@/components/MotionWrapper";
 import { StaggerContainer, StaggerItem } from "@/components/MotionWrapper";
+import { wilayas } from "@/data";
 
 export default function DeliverySection() {
   const { language } = useLanguage();
@@ -22,6 +23,7 @@ export default function DeliverySection() {
       <div className=" flex w-full flex-col items-center gap-18">
         <MotionWrapper
           variants={fadeUp}
+          threshold={0}
           className="flex flex-col items-center  gap-8"
         >
           <h2 className="  font-rale text-5xl md:text-[56px] text-center lg:text-[64px] font-bold  text-black">
@@ -37,11 +39,12 @@ export default function DeliverySection() {
 
         <StaggerContainer
           staggerDelay={0.06}
+          threshold={0}
           className="grid w-full gap-3 grid-cols-[repeat(auto-fill,minmax(320px,1fr))]"
         >
-          {[...Array(8)].map((_, i) => (
-            <StaggerItem key={i} as="article" variants={fadeUp} duration={0.45}>
-              <DeliveryCard language={language} />
+          {wilayas.map((wilaya) => (
+            <StaggerItem key={wilaya.id} as="article" variants={fadeUp} duration={0.45}>
+              <DeliveryCard language={language} wilaya={wilaya} />
             </StaggerItem>
           ))}
         </StaggerContainer>

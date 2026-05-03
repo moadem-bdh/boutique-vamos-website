@@ -23,10 +23,7 @@
   --font-rale: "Raleway", Arial, Helvetica, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-  
-}
+
 
 section {
   scroll-margin-top: 72px; /* your navbar height */
