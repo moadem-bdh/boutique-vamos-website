@@ -19,23 +19,33 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://boutique-vamos.vercel.app"),
   title: "Boutique Vamos",
-  description: "Boutique Vamos",
+  description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
   icons: {
     icon: "/assets/logoDark.svg",
   },
 
-   openGraph: {
+  openGraph: {
     title: "Boutique Vamos",
     description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
+    url: "https://boutique-vamos.vercel.app",
+    siteName: "Boutique Vamos",
     images: [
       {
-        url: "/assets/Thumbnail.png", // put image in /public folder
+        url: "https://boutique-vamos.vercel.app/assets/Thumbnail.png", // absolute URL required for Instagram
         width: 1200,
         height: 630,
-        alt: "Preview image",
+        alt: "Boutique Vamos - Football Jerseys",
       },
     ],
-    type: "website"
+    type: "website",
+    locale: "en_US",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Boutique Vamos",
+    description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
+    images: ["https://boutique-vamos.vercel.app/assets/Thumbnail.png"],
   },
 };
 
