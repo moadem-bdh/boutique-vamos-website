@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+
+  metadataBase: new URL("https://boutique-vamos.vercel.app"),
+
   title: "Boutique Vamos",
   description: "Boutique Vamos",
   icons: {
