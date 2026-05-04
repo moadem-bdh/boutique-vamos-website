@@ -22,6 +22,19 @@ export const metadata: Metadata = {
   icons: {
     icon: "/assets/logoDark.svg",
   },
+
+   openGraph: {
+    title: "Boutique Vamos",
+    description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
+    images: [
+      {
+        url: "/assets/Thumbnail.png", // put image in /public folder
+        width: 1200,
+        height: 630,
+        alt: "Preview image",
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({
