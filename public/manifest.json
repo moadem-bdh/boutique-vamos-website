@@ -1,0 +1,18 @@
+{
+  "name": "Boutique Vamos",
+  "short_name": "Vamos",
+  "description": "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/assets/appleIcon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
