@@ -16,62 +16,79 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://boutique-vamos.vercel.app"),
-  title: "Boutique Vamos",
-  description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
+// Dynamic metadata — locale changes based on the active language route
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang: rawLang } = await params;
+  const lang = rawLang === "fr" ? "fr" : "en";
 
-  // Icons (browser tab, iOS & Android home screen) 
-  icons: {
-    icon: [
-      { url: "/assets/logoDark.svg", type: "image/svg+xml" },
-    ],
-    shortcut: "/assets/logoDark.svg",
-    // iOS "Add to Home Screen" icon
-    apple: [
-      { url: "/assets/appleIcon.png", sizes: "180x180", type: "image/png" },
-    ],
-  },
+  const ogLocale    = lang === "fr" ? "fr_FR" : "en_US";
+  const altLocale   = lang === "fr" ? "en_US" : "fr_FR";
+  const siteUrl     = lang === "fr"
+    ? "https://boutique-vamos.vercel.app/fr"
+    : "https://boutique-vamos.vercel.app/en";
 
-  // Android "Add to Home Screen" icon — reads from /manifest.json
-  manifest: "/manifest.json",
-
-  // Open Graph
-  openGraph: {
+  return {
+    metadataBase: new URL("https://boutique-vamos.vercel.app"),
     title: "Boutique Vamos",
     description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
-    url: "https://boutique-vamos.vercel.app",
-    siteName: "Boutique Vamos",
-    images: [
-      {
-        url: "https://boutique-vamos.vercel.app/assets/Thumbnail.png",
-        secureUrl: "https://boutique-vamos.vercel.app/assets/Thumbnail.png",
-        width: 1200,
-        height: 630,
-        alt: "Boutique Vamos - Football Jerseys",
-        type: "image/png",
-      },
-    ],
-    type: "website",
-    locale: "en_US",
-  },
 
-  //  Twitter / X   
-  twitter: {
-    card: "summary_large_image",
-    title: "Boutique Vamos",
-    description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
-    images: ["https://boutique-vamos.vercel.app/assets/Thumbnail.png"],
-  },
+    // Icons (browser tab, iOS & Android home screen)
+    icons: {
+      icon: [
+        { url: "/assets/logoDark.svg", type: "image/svg+xml" },
+      ],
+      shortcut: "/assets/logoDark.svg",
+      // iOS "Add to Home Screen" icon
+      apple: [
+        { url: "/assets/appleIcon.png", sizes: "180x180", type: "image/png" },
+      ],
+    },
 
-  // in whatsapp to make it work I have to addt eh scure URL
-  other: {
-    "og:image:secure_url": "https://boutique-vamos.vercel.app/assets/Thumbnail.png",
-    "og:image:width": "1200",
-    "og:image:height": "630",
-    "og:image:type": "image/png",
-  },
-};
+    // Android "Add to Home Screen" icon — reads from /manifest.json
+    manifest: "/manifest.json",
+
+    // Open Graph — locale matches the active language
+    openGraph: {
+      title: "Boutique Vamos",
+      description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
+      url: siteUrl,
+      siteName: "Boutique Vamos",
+      images: [
+        {
+          url: "https://boutique-vamos.vercel.app/assets/Thumbnail.png",
+          secureUrl: "https://boutique-vamos.vercel.app/assets/Thumbnail.png",
+          width: 1200,
+          height: 630,
+          alt: "Boutique Vamos - Football Jerseys",
+          type: "image/png",
+        },
+      ],
+      type: "website",
+      locale: ogLocale,
+      alternateLocale: [altLocale],
+    },
+
+    // Twitter / X
+    twitter: {
+      card: "summary_large_image",
+      title: "Boutique Vamos",
+      description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
+      images: ["https://boutique-vamos.vercel.app/assets/Thumbnail.png"],
+    },
+
+    // WhatsApp fix: explicit secure_url + dimensions
+    other: {
+      "og:image:secure_url": "https://boutique-vamos.vercel.app/assets/Thumbnail.png",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:type": "image/png",
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
