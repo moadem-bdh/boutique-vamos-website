@@ -16,7 +16,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Dynamic metadata — locale changes based on the active language route
+const metadata = {
+  en: {
+    title: "Boutique Vamos",
+    description:
+      "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
+  },
+  fr: {
+    title: "Boutique Vamos",
+    description:
+      "Découvrez des maillots de football des meilleurs clubs, équipes nationales, classiques vintage et streetwear.",
+  },
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -24,37 +36,30 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang: rawLang } = await params;
   const lang = rawLang === "fr" ? "fr" : "en";
-
-  const ogLocale    = lang === "fr" ? "fr_FR" : "en_US";
-  const altLocale   = lang === "fr" ? "en_US" : "fr_FR";
-  const siteUrl     = lang === "fr"
-    ? "https://boutique-vamos.vercel.app/fr"
-    : "https://boutique-vamos.vercel.app/en";
+  const { title, description } = metadata[lang];
+  const ogLocale = lang === "fr" ? "fr_FR" : "en_US";
+  const altLocale = lang === "fr" ? "en_US" : "fr_FR";
+  const siteUrl =
+    lang === "fr"
+      ? "https://boutique-vamos.vercel.app/fr"
+      : "https://boutique-vamos.vercel.app/en";
 
   return {
     metadataBase: new URL("https://boutique-vamos.vercel.app"),
-    title: "Boutique Vamos",
-    description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
-
-    // Icons (browser tab, iOS & Android home screen)
+    title,
+    description,
     icons: {
-      icon: [
-        { url: "/assets/logoDark.svg", type: "image/svg+xml" },
-      ],
+      icon: [{ url: "/assets/logoDark.svg", type: "image/svg+xml" }],
       shortcut: "/assets/logoDark.svg",
-      // iOS "Add to Home Screen" icon
       apple: [
         { url: "/assets/appleIcon.png", sizes: "180x180", type: "image/png" },
       ],
     },
-
-    // Android "Add to Home Screen" icon — reads from /manifest.json
+    
     manifest: "/manifest.json",
-
-    // Open Graph — locale matches the active language
     openGraph: {
-      title: "Boutique Vamos",
-      description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
+      title,
+      description,
       url: siteUrl,
       siteName: "Boutique Vamos",
       images: [
@@ -72,17 +77,16 @@ export async function generateMetadata({
       alternateLocale: [altLocale],
     },
 
-    // Twitter / X
     twitter: {
       card: "summary_large_image",
-      title: "Boutique Vamos",
-      description: "Discover football jerseys from top clubs, national teams, vintage classics, and streetwear.",
+      title,
+      description,
       images: ["https://boutique-vamos.vercel.app/assets/Thumbnail.png"],
     },
 
-    // WhatsApp fix: explicit secure_url + dimensions
     other: {
-      "og:image:secure_url": "https://boutique-vamos.vercel.app/assets/Thumbnail.png",
+      "og:image:secure_url":
+        "https://boutique-vamos.vercel.app/assets/Thumbnail.png",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:image:type": "image/png",
@@ -99,6 +103,7 @@ export default async function RootLayout({
 }>) {
   const { lang: rawLang } = await params;
   const lang = (rawLang === "fr" ? "fr" : "en") as "fr" | "en";
+
   return (
     <html lang={lang} suppressHydrationWarning>
       <body
